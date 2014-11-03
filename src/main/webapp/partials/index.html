@@ -1,0 +1,69 @@
+<div class="row">
+<div class="pull-right">
+	<a href="#!/create" class="btn btn-default" ng-show="hasRole('admin')" title="Create"><span class="glyphicon glyphicon-plus"></span></a>
+</div>
+<div class="page-header">
+	<h3>Students</h3>
+</div>
+
+
+<div class="table-responsive col-md-10">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Group</th>
+            <th>Grade Point Average</th>
+            <th ng-show="hasRole('admin')">Edit</th>
+            <th ng-show="hasRole('admin')">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="studentEntry in studentEntries">
+            <td>{{ studentEntry.firstName }}</td>
+            <td>{{ studentEntry.lastName }}</td>
+            <td>{{ studentEntry.groupNumber }}</td>
+            <td>{{ studentEntry.gradePointAverage }}</td>
+            <td><a href="#!/edit/{{studentEntry.id}}" class="btn btn-xs btn-default" ng-show="hasRole('admin')" title="edit"><span class="glyphicon glyphicon-pencil"></span></a></td>
+            <td><a href="" ng-click="deleteEntry(studentEntry)" class="btn btn-xs btn-default" ng-show="hasRole('admin')" title="delete"><span class="glyphicon glyphicon-trash"></span></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+
+<div class="row" div ng-show="hasRole('admin')">
+<div class="pull-right">
+    <div>
+        <a href="#!/createUser" class="btn btn-default" ng-show="hasRole('admin')" title="CreateUser"><span class="glyphicon glyphicon-plus"></span></a>
+    </div>
+</div>
+<div class="page-header">
+    <h3>Users</h3>
+</div>
+
+
+<div class="table-responsive col-md-8 row">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Roles</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="userEntry in userEntries">
+            <td>{{ userEntry.name }}</td>
+            <td>{{ userEntry.password }}</td>
+            <td>
+                <ul class="list-inline" ng-repeat="userRole in userEntry.roles">
+                    <li>{{ userRole }}</li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>

@@ -1,0 +1,65 @@
+<div class="page-header" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+     xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+	<h3>Edit</h3>
+</div>
+
+<form class="form-horizontal" name="editStudent">
+    <div class="form-group">
+        <label class="control-label col-md-2" for="firstName">First Name:</label>
+        <div class="col-md-6">
+            <input ng-model="studentEntry.firstName" id="firstName" name="firstName" class="form-control" ng-maxlength="32" required/>
+            <div class="error-container" ng-show="editStudent.firstName.$dirty && editStudent.firstName.$invalid">
+                <small class="text-danger"
+                       ng-show="editStudent.firstName.$error.maxlength">
+                    First name cannot be longer than 32 characters
+                </small>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2" for="lastName">Last Name:</label>
+        <div class="col-md-6">
+            <input ng-model="studentEntry.lastName" id="lastName" name="lastName" class="form-control" ng-maxlength="32" required/>
+            <div class="error-container" ng-show="editStudent.lastName.$dirty && editStudent.lastName.$invalid">
+                <small class="text-danger"
+                       ng-show="editStudent.lastName.$error.maxlength">
+                    Last name cannot be longer than 32 characters
+                </small>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2" for="groupNumber">Group:</label>
+        <div class="col-md-6">
+            <input ng-model="studentEntry.groupNumber" id="groupNumber" name="groupNumber" class="form-control" ng-maxlength="4" required/>
+            <div class="error-container" ng-show="editStudent.groupNumber.$dirty && editStudent.groupNumber.$invalid">
+                <small class="text-danger"
+                       ng-show="editStudent.groupNumber.$error.maxlength">
+                    Group cannot be longer than 4 characters
+                </small>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2" for="gradePointAverage">Grade Point Average:</label>
+        <div class="col-md-6">
+            <input type="number" min="1" max="10" ng-model="studentEntry.gradePointAverage" id="gradePointAverage" name="gradePointAverage" class="form-control" required/>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="error-container"
+             ng-show="editStudent.firstName.$error.required
+           || editStudent.lastName.$error.required
+           || editStudent.groupNumber.$error.required
+           || editStudent.gradePointAverage.$error.required">
+            <small class="text-warning">
+                All fields must be required
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6 col-md-offset-2">
+            <button type="submit" class="btn btn-primary" ng-click="save()" ng-disabled="editStudent.$invalid"><span class="glyphicon glyphicon-ok"></span> Save</button>
+        </div>
+    </div>
+</form>
